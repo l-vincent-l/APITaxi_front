@@ -2,30 +2,30 @@
     <h1>Hails POST and PUT</h1>
     <div id="error">{error}</div>
     <ul>
-    <li each={hails_states}>
-        <h4>Method: {method} @ {datetime}</h4><br/>
-        <h5>Initial status: {initial_status}</h5>
+    <li each={state, i in hails_states}>
+        <h4>Method: {state.method} @ {state.datetime}</h4><br/>
+        <h5>Initial status: {state.initial_status}</h5>
         <div>
-          <a data-toggle="collapse" href="#collapsePayload"
-              aria-expanded="false" aria-controls="collapsePayload">
+          <a data-toggle="collapse" href="#collapsePayload{i}"
+              aria-expanded="false" aria-controls="collapsePayload{i}">
                 Payload
           </a>
-          <div class="collapse" id="collapsePayload">
+          <div class="collapse" id="collapsePayload{i}">
               <div class="card card-block">
-                {payload}
+                {state.payload}
               </div>
           </div>
         </div>
-        <h5>Return code: {code}</h5>
+        <h5>Return code: {state.code}</h5>
 
         <div>
-          <a data-toggle="collapse" href="#collapseReturn"
-              aria-expanded="false" aria-controls="collapseReturn">
+          <a data-toggle="collapse" href="#collapseReturn{i}"
+              aria-expanded="false" aria-controls="collapseReturn{i}">
                 Return
           </a>
-          <div class="collapse" id="collapseReturn">
+          <div class="collapse" id="collapseReturn{i}">
               <div class="card card-block">
-                {payload}
+                {state.return}
               </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
             .then(function(r) {
                 this.error = "";
                 this.hails_states = r.data.map(function(state){
-                    var d = new Date(state['datetime']);
+                    var d = new Date(state['datetime'] * 1000);
                     state['datetime'] = d.toISOString();
                     return state;
                 });
