@@ -58,10 +58,6 @@ def stats_taxis(dep):
                           .filter(ADS.insee.like(depattern)) \
                           .filter(Taxi.last_update_at >= last_day) \
                           .group_by(Taxi.added_by)
-        for ta in nb_taxis:
-            tab_nb_taxis[user_datastore.get_user(ta.added_by).commercial_name]['ntaxis'] = ta.ntaxis
-        for ta in nb_active_taxis:
-            tab_nb_taxis[user_datastore.get_user(ta.added_by).commercial_name]['nactivetaxis'] = ta.nactivetaxis
 
     elif current_user.has_role('operateur'):
         nb_taxis = db.session.query(Taxi.added_by,
@@ -81,10 +77,6 @@ def stats_taxis(dep):
                           .filter(Taxi.last_update_at >= last_day) \
                           .filter(Taxi.added_by == current_user.id) \
                           .group_by(Taxi.added_by)
-        for ta in nb_taxis:
-            tab_nb_taxis[user_datastore.get_user(ta.added_by).commercial_name]['ntaxis'] = ta.ntaxis
-        for ta in nb_active_taxis:
-            tab_nb_taxis[user_datastore.get_user(ta.added_by).commercial_name]['nactivetaxis'] = ta.nactivetaxis
 
     if not tab_nb_taxis:
         nb_taxis = db.session.query(
@@ -100,10 +92,17 @@ def stats_taxis(dep):
                           .join(Taxi.ads) \
                           .filter(ADS.insee.like(depattern)) \
                           .filter(Taxi.last_update_at >= last_day)
+
     if hidden_operator:
         nb_taxis = nb_taxis.filter(Taxi.added_by != hidden_operator.id)
-    if hidden_operator:
         nb_active_taxis = nb_active_taxis.filter(Taxi.added_by != hidden_operator.id)
+
+    if tab_nb_taxis:
+        for ta in nb_taxis:
+            tab_nb_taxis[user_datastore.get_user(ta.added_by).commercial_name]['ntaxis'] = ta.ntaxis
+        for ta in nb_active_taxis:
+            tab_nb_taxis[user_datastore.get_user(ta.added_by).commercial_name]['nactivetaxis'] = ta.nactivetaxis
+
 
     tab_nb_taxis['Total']['ntaxis'] = 0
     tab_nb_taxis['Total']['nactivetaxis'] = 0
