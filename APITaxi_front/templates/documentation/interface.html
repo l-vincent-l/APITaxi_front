@@ -1,0 +1,124 @@
+{% extends "documentation/base.html" %}
+{% block styles %}
+ {{super()}}
+ <style>
+.menu-index ul{
+height:auto;
+}
+ </style>
+{% endblock %}
+{% block documentationcontent %}
+<h1>Overview</h1>
+This page will give you guidelines and obligations on what you can do and not do
+when you interact with the le.taxi and your customers.
+<br/>
+This page follows the structure of the technical documentation, 
+
+<h1>Operator</h1>
+<h2>Declaring a vehicle</h2>
+<h3>Guidelines</h3>
+We recommend you to make it possible for your customer to take a photography of
+his car registration documentation within the application.
+<br/>
+We also recommend to re-post the vehicle to le.taxi at the opening of the
+application.
+
+<h3>Obligations</h3>
+There is no obligation
+
+
+<h2>Declaring a driver</h2>
+<h3>Guidelines</h3>
+We recommend you to make it possible for your customer to take a photography of
+his driving licence within the application.
+<br/>
+We also recommend to re-post the driver to le.taxi at the opening of the
+application.
+<h3>Obligations</h3>
+There is no obligation
+
+<h2>Declaring a licence (ADS)</h2>
+<h3>Guidelines</h3>
+We recommend you to make it possible for your customer to take a photography of
+his licence (ADS) within the application.
+<br/>
+We also recommend to re-post the licence to le.taxi at the opening of the
+application.
+<h3>Obligations</h3>
+There is no obligation
+
+<h2>Declaring a taxi</h2>
+<h3>Guidelines</h3>
+We recommend to re-post the taxi to le.taxi at the opening of the application.
+<h3>Obligations</h3>
+
+<h2>Updating the location of a taxi</h2>
+<h3>Guidelines</h3>
+We recommend an always accessible on/off button with the logo le.taxi that will
+trigger if the location is send or not to le.taxi.
+<h3>Obligations</h3>
+You must update the location of a taxi at least every 5 seconds, at must every
+second.
+<br/>
+A taxi must be able to stop to send its location to le.taxi.
+
+<h2>Updating the status of a taxi</h2>
+<h3>Guidelines</h3>
+There is no guidelines.
+<h3>Obligations</h3>
+A taxi must be able to put his status to any status at any time.
+
+<h2>Querying the status of a taxi</h2>
+<h3>Guidelines</h3>
+There is no guidelines.
+<h3>Obligations</h3>
+There is no obligations.
+
+<h2>Receiving a hail</h2>
+<h3>Guidelines</h3>
+There is no guidelines.
+<h3>Obligations</h3>
+Do not display in the first screen the address of the customer.
+
+<h2>Querying the status of a hail</h2>
+<h3>Guidelines</h3>
+We recommend you too ask for the status every second.
+<h3>Obligations</h3>
+There is no obligations.
+
+<h2>Updating the status of a hail</h2>
+<h3>Guidelines</h3>
+There is no guidelines.
+<h3>Obligations</h3>
+There is no obligations.
+
+
+<h1>Search engine</h1>
+
+<h2>Looking for taxis</h2>
+<h3>Guidelines</h3>
+When displayed as a real-time map, or a real-time map you should call this API,
+every second.
+<h3>Obligations</h3>
+There is no obligations.
+
+<h2>Creating a Hail</h2>
+<h3>Guidelines</h3>
+There is no guidelines.
+<h3>Obligations</h3>
+The correct term to use to hail a taxi is in english "Hail" and in french
+"Héler".
+
+<h2>Querying a Hail status</h2>
+<h3>Guidelines</h3>
+We recommend you too ask for the status every second.
+<h3>Obligations</h3>
+There is no obligations.
+
+<h2>Updating a Hail</h2>
+<h3>Guidelines</h3>
+There is no guidelines.
+<h3>Obligations</h3>
+There is no obligations.
+
+{% endblock %}
